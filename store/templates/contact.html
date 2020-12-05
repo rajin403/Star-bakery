@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="container">
+	<div class="p-4 m-4">
+		<div class="col-lg-5 mx-auto border rounded pt-4">
+			<h3 class="alert alert-light border rounded">Contact</h3>
+			<form method="post" action="/contact">
+
+				{% csrf_token %}
+				<!--name-->
+				{% if msg %}
+				<div class="alert alert-success" role="alert"> 
+					{{msg}}
+				</div>
+				{% endif %}
+				{% if error %}
+				<div class="alert alert-danger" role="alert"> 
+					{{error}}
+				</div>
+				{% endif %}
+				<div class="form-group">
+					<label for="">Name</label>
+					<input type="text" name="name" placeholder=""class="form-control form-control-sm">
+				</div>
+				
+				
+				<!--email-->
+				<div class="form-group">
+					<label for="">Email</label>
+					<input type="email" name="email" placeholder="" class="form-control form-control-sm">
+				</div>
+				<!--subject-->
+				<div class="form-group">
+					<label for="">Subject</label>
+					<input type="text" name="subject" placeholder=""class="form-control form-control-sm">
+				</div>
+				<!--message-->
+				<div class="form-group">
+					<label for="">Message</label>
+					<textarea tabindex="4" class="form-control" name="message"></textarea>
+				</div>
+
+				<div class="form-group">
+					<input type="submit" name="" class="btn btn-sm btn-info" value="send">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
